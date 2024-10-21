@@ -5,7 +5,7 @@ import { handleError, handleSuccess } from '../../utils';
 
 const Home = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
-  const [products, setProducts] = useState("");
+  const [products, setProducts] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     setLoggedInUser(localStorage.getItem("loggedInUser"));
@@ -75,7 +75,7 @@ const Home = () => {
             </p>
             <div>
               {products &&
-                products?.map((item, index) => (
+                products.map((item, index) => (
                   <ul key={index}>
                     <p className="">
                       {item.name} : {item.price}
