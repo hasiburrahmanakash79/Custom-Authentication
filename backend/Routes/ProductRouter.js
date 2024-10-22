@@ -6,12 +6,20 @@ router.get('/', ensureAuthenticated, (req, res) => {
     console.log('---- logged in user detail ---', req.user);
     res.status(200).json([
         {
-            name: "mobile",
-            price: 10000
+            name: "Mobile",
+            price: 30000
         },
         {
-            name: "tv",
-            price: 20000
+            name: "Television",
+            price: 40000
+        },
+        {
+            name: "Fridge",
+            price: 30000
+        },
+        {
+            name: "Washing Machine",
+            price: 50000
         }
     ])
 });
