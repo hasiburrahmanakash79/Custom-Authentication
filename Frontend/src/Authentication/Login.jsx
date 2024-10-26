@@ -19,45 +19,6 @@ function Login() {
     setLoginInfo(copyLoginInfo);
   };
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   console.log(e);
-  //   const { email, password } = loginInfo;
-  //   if (!email || !password) {
-  //     return handleError("email and password are required");
-  //   }
-  //   // http://localhost:3000/
-  //   try {
-  //     const url = `http://localhost:3000/auth/login`;
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(loginInfo),
-  //     });
-  //     console.log(response);
-  //     const result = await response.json();
-  //     const { success, message, jwtToken, name, error } = result;
-  //     if (success) {
-  //       handleSuccess(message);
-  //       localStorage.setItem("token", jwtToken);
-  //       localStorage.setItem("loggedInUser", name);
-  //       setTimeout(() => {
-  //         navigate("/home");
-  //       }, 1000);
-  //     } else if (error) {
-  //       const details = error?.details[0].message;
-  //       handleError(details);
-  //     } else if (!success) {
-  //       handleError(message);
-  //     }
-  //     console.log(result);
-  //   } catch (err) {
-  //     handleError(err);
-  //   }
-  // };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log('Form submitted:', e);
@@ -90,8 +51,8 @@ function Login() {
             if (contentType && contentType.includes("application/json")) {
                 result = await response.json();
             } else {
-                const text = await response.text(); // Handle as text if not JSON
-                result = { success: true, message: text }; // Create a fallback result
+                const text = await response.text(); 
+                result = { success: true, message: text }; 
             }
 
             console.log('Parsed result:', result);
@@ -107,14 +68,14 @@ function Login() {
                     navigate("/home");
                 }, 1000);
             } else if (error) {
-                const details = error?.details[0]?.message || message; // Added fallback for details
+                const details = error?.details[0]?.message || message; 
                 handleError(details);
             } else {
                 handleError(message);
             }
         } else {
-            const errorText = await response.text(); // Read the error response as text
-            handleError(errorText); // Use the text as an error message
+            const errorText = await response.text(); 
+            handleError(errorText);
         }
 
     } catch (err) {
